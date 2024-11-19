@@ -1332,11 +1332,11 @@ public class TTpage extends javax.swing.JFrame {
             String toDateStr = sdf.format(toDate);
 
             Connection con = Database.getConnection();
-            String sql = "SELECT TOP 1 d.tendg FROM Sinhvien d "
-                    + "JOIN PMT p ON p.madg = d.madg "
+            String sql = "SELECT TOP 1 d.tensv FROM Sinhvien d "
+                    + "JOIN PMT p ON p.masv = d.masv "
                     + "JOIN ChitietMt ct ON ct.maphieu = p.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
-                    + "GROUP BY d.madg, d.tendg "
+                    + "GROUP BY d.masv, d.tensv "
                     + "ORDER BY COUNT(*) DESC";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, fromDateStr);
@@ -1344,7 +1344,7 @@ public class TTpage extends javax.swing.JFrame {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                tendgtk.setText(rs.getString("tendg"));
+                tendgtk.setText(rs.getString("tensv"));
             } else {
                 tendgtk.setText("Không có");
             }
@@ -1606,7 +1606,7 @@ public class TTpage extends javax.swing.JFrame {
             rs1.close();
             statement1.close();
 
-            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.madg "
+            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv "
                     + "FROM PMT p "
                     + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
                     + "WHERE ct.hientrangsau IS NULL "
@@ -1623,7 +1623,7 @@ public class TTpage extends javax.swing.JFrame {
                     rs.getString("masach"),
                     rs.getString("ngaylap"),
                     rs.getString("hantra"),
-                    rs.getString("madg"),});
+                    rs.getString("masv"),});
             }
 
             rs.close();
@@ -1664,7 +1664,7 @@ public class TTpage extends javax.swing.JFrame {
             tongchuatra.setText(String.valueOf(notReturned));
             rs1.close();
             statement1.close();
-            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.madg  FROM PMT p "
+            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv  FROM PMT p "
                     + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? AND ct.hientrangsau IS NULL";
             PreparedStatement statement = con.prepareStatement(sql);
@@ -1679,7 +1679,7 @@ public class TTpage extends javax.swing.JFrame {
                     rs.getString("masach"),
                     rs.getString("ngaylap"),
                     rs.getString("hantra"),
-                    rs.getString("madg"),});
+                    rs.getString("masv"),});
             }
             rs.close();
             statement.close();
@@ -1727,7 +1727,7 @@ public class TTpage extends javax.swing.JFrame {
             tongquahan.setText(String.valueOf(quahan));
             rs1.close();
             statement1.close();
-            String sql = "SELECT p.madg, p.maphieu, p.ngaylap, p.hantra, ct.ngaytra, ct.masach  FROM PMT p "
+            String sql = "SELECT p.masv, p.maphieu, p.ngaylap, p.hantra, ct.ngaytra, ct.masach  FROM PMT p "
                     + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
                     + "AND ("
@@ -1742,7 +1742,7 @@ public class TTpage extends javax.swing.JFrame {
             model.setRowCount(0);
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getString("madg"),
+                    rs.getString("masv"),
                     rs.getString("maphieu"),
                     rs.getString("ngaylap"),
                     rs.getString("hantra"),
