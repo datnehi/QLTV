@@ -1,6 +1,6 @@
 package view;
 
-import controller.Docgiacn;
+import controller.Sinhviencn;
 import controller.Pmtcn;
 import controller.Sachcn;
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class homepage extends javax.swing.JFrame {
     }
 
     public JTextField getMadg() {
-        return madg;
+        return masv;
     }
 
     @SuppressWarnings("unchecked")
@@ -50,8 +50,8 @@ public class homepage extends javax.swing.JFrame {
         allsach = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        madg = new javax.swing.JTextField();
-        maphieu = new javax.swing.JTextField();
+        masv = new javax.swing.JTextField();
+        tens = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         bangmt = new javax.swing.JTable();
@@ -59,6 +59,9 @@ public class homepage extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        matkhau = new javax.swing.JPasswordField();
+        chuatra = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -182,7 +185,6 @@ public class homepage extends javax.swing.JFrame {
         jPanel8.add(allsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 110, 30));
 
         jPanel12.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 460, 420));
-        jPanel8.getAccessibleContext().setAccessibleName("Thông tin tìm kiếm");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/—Pngtree—clouds sky blue aesthetic pastel_2447709.png"))); // NOI18N
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 740));
@@ -191,13 +193,13 @@ public class homepage extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        madg.addActionListener(new java.awt.event.ActionListener() {
+        masv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                madgActionPerformed(evt);
+                masvActionPerformed(evt);
             }
         });
-        jPanel2.add(madg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 60, 130, 30));
-        jPanel2.add(maphieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 160, 130, 30));
+        jPanel2.add(masv, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 50, 130, 30));
+        jPanel2.add(tens, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 200, 130, 30));
 
         bangmt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,11 +257,23 @@ public class homepage extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 530, 260, 30));
 
-        jLabel1.setText("Mã Số ĐG");
+        jLabel1.setText("Mã Sinh Viên");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 30, -1, -1));
 
-        jLabel2.setText("Mã Phiếu");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 120, -1, -1));
+        jLabel2.setText("Tên Sách");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 170, -1, -1));
+
+        jLabel6.setText("Mật Khẩu");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 90, -1, -1));
+        jPanel2.add(matkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 120, 130, 30));
+
+        chuatra.setText("Chưa trả");
+        chuatra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chuatraActionPerformed(evt);
+            }
+        });
+        jPanel2.add(chuatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 250, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/—Pngtree—clouds sky blue aesthetic pastel_2447709.png"))); // NOI18N
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 740));
@@ -276,48 +290,28 @@ public class homepage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            String ma1 = madg.getText();
-            String ma2 = maphieu.getText();
-            if (ma1.equals("") && ma2.equals("")) {
-                JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin.");
+            String ma1 = masv.getText();
+            String ma2 = tens.getText();
+            String ma3 = matkhau.getText();
+            boolean check = chuatra.isSelected();
+            if (ma1.equals("") || ma3.equals("")) {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ mã sinh viên và mật khẩu.");
                 return;
             }
-            if (!ma1.matches("DG\\d{2}") && ma2.equals("")) {
-                JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                return;
-            }
-            if (!ma2.matches("P\\d{3}") && ma1.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                return;
-            }
-            if (!ma1.matches("DG\\d{2}") && !ma2.matches("P\\d{3}")) {
-                if (!ma1.matches("DG\\d{2}")) {
-                    JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                    return;
-                }
-                if (!ma2.matches("P\\d{3}")) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                    return;
-                }
-            }
-            if (Docgiacn.loadById(ma1) == null && !ma1.equals("")) {
-                JOptionPane.showMessageDialog(null, "Độc giả không tồn tại.");
-                return;
-            }
-            if (Pmtcn.loadById(ma2) == false && !ma2.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả không tồn tại.");
+            if (!Sinhviencn.loginSV(ma1, ma3)) {
+                JOptionPane.showMessageDialog(null, "Tài khoản sai vui lòng nhập lại");
                 return;
             }
             DefaultTableModel model = (DefaultTableModel) bangmt.getModel();
-            Pmtcn.ttMuonTra(ma1, ma2, model);
+            Pmtcn.ttMuonTraSV(ma1, ma2, check, model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void madgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_madgActionPerformed
+    private void masvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_madgActionPerformed
+    }//GEN-LAST:event_masvActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
@@ -340,10 +334,9 @@ public class homepage extends javax.swing.JFrame {
         String tl = theloai.getText().trim();
         if (ma.isEmpty() && ten.isEmpty() && tl.isEmpty() && tg.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin tìm kiếm!");
-        } else {
-            DefaultTableModel model = (DefaultTableModel) bangsach.getModel();
-            Sachcn.timKiem(ma, ten, tl, tg, model);
         }
+        DefaultTableModel model = (DefaultTableModel) bangsach.getModel();
+        Sachcn.timKiem(ma, ten, tl, tg, model);
 
     }//GEN-LAST:event_timkiemActionPerformed
 
@@ -362,6 +355,10 @@ public class homepage extends javax.swing.JFrame {
         dangnhap.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void chuatraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuatraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chuatraActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -375,6 +372,7 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JButton allsach;
     private javax.swing.JTable bangmt;
     private javax.swing.JTable bangsach;
+    private javax.swing.JCheckBox chuatra;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -388,6 +386,7 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
@@ -396,10 +395,11 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField madg;
-    private javax.swing.JTextField maphieu;
     private javax.swing.JTextField masach;
+    private javax.swing.JTextField masv;
+    private javax.swing.JPasswordField matkhau;
     private javax.swing.JTextField tacgia;
+    private javax.swing.JTextField tens;
     private javax.swing.JTextField tensach;
     private javax.swing.JTextField theloai;
     private javax.swing.JButton timkiem;

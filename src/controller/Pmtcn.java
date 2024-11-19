@@ -11,26 +11,28 @@ import javax.swing.JOptionPane;
 import model.ChitietMt;
 import model.PMT;
 import model.Sach;
-import model.TaiKhoan;
 
 public class Pmtcn {
 
-    private Pmtcn() {
-    }
-
-    public static void ttMuonTra(String madg, String maphieu, DefaultTableModel model) {
+    public static void ttMuonTraSV(String masv, String tensach, boolean check, DefaultTableModel model) {
         try {
             Connection con = Database.getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT PMT.maphieu, Sach.masach, Sach.tensach, PMT.ngaylap , PMT.hantra, "
+            String sql = "SELECT PMT.maphieu, Sach.masach, Sach.tensach, PMT.ngaylap , PMT.hantra, "
                     + "ChitietMt.hientrangmuon, ChitietMT.hientrangsau, ChitietMT.ngaytra "
                     + "FROM PMT "
                     + "JOIN ChitietMT ON PMT.maphieu = ChitietMT.maphieu "
-                    + "JOIN Sach ON ChitietMT.masach = Sach.masach "
-                    + "WHERE PMT.madg LIKE ? AND ChitietMt.maphieu LIKE ? "
-                    + "ORDER BY PMT.ngaylap DESC");
+                    + "JOIN Sach ON ChitietMT.masach = Sach.masach ";
+            if (!check) {
+                sql += "WHERE PMT.masv LIKE ? AND Sach.tensach LIKE ? "
+                        + "ORDER BY PMT.ngaylap DESC";
+            } else {
+                sql += "WHERE PMT.masv LIKE ? AND Sach.tensach LIKE ?  AND ChitietMT.ngaytra is null "
+                        + "ORDER BY PMT.ngaylap DESC";
+            }
+            PreparedStatement statement = con.prepareStatement(sql);
 
-            statement.setString(1, "%" + madg);
-            statement.setString(2, "%" + maphieu);
+            statement.setString(1, "%" + masv);
+            statement.setString(2, "%" + tensach);
             ResultSet rs = statement.executeQuery();
             model.setRowCount(0);
             while (rs.next()) {
@@ -82,7 +84,8 @@ public class Pmtcn {
                 } else {
                     chitiet.setNgaytra(rs.getString("ngaytra"));
                 }
-                model.addRow(new Object[]{pmt.getMaphieu(), sach.getMasach(), sach.getTensach(), pmt.getNgaylap(), pmt.getHantra(), sach.getHientrangtruoc(), chitiet.getHientrangsau(), chitiet.getNgaytra()});
+                model.addRow(new Object[]{pmt.getMaphieu(), sach.getMasach(), sach.getTensach(), pmt.getNgaylap(),
+                    pmt.getHantra(), sach.getHientrangtruoc(), chitiet.getHientrangsau(), chitiet.getNgaytra()});
             }
             rs.close();
             statement.close();
@@ -92,18 +95,18 @@ public class Pmtcn {
         }
     }
 
-    public static void Loadttm(String maD, String maP, DefaultTableModel model) {
+    public static void Loadttm(String maD, String tenS, DefaultTableModel model) {
         try {
             Connection con = Database.getConnection();
             String sql = "SELECT p.maphieu, ct.masach, s.tensach, p.ngaylap, p.hantra, ct.hientrangmuon, ct.hientrangsau, ct.ngaytra "
                     + "FROM PMT p "
                     + "JOIN ChitietMT ct ON p.maphieu = ct.maphieu "
                     + "JOIN Sach s ON s.masach = ct.masach "
-                    + "WHERE p.madg LIKE ? AND p.maphieu LIKE ?";
+                    + "WHERE p.masv LIKE ? AND s.tensach LIKE ?";
 
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, "%" + maD);
-            statement.setString(2, "%" + maP);
+            statement.setString(2, "%" + tenS + "%");
 
             ResultSet rs = statement.executeQuery();
 
@@ -132,56 +135,11 @@ public class Pmtcn {
         }
     }
 
-    public static void kiemtrataikhoan() {
-        try {
-            Connection con = Database.getConnection();
-            String sql = "SELECT * FROM TaiKhoan";
-            PreparedStatement statement = con.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                TaiKhoan taikhoan = new TaiKhoan();
-                taikhoan.setTenDangNhap(rs.getString("tendangnhap"));
-                taikhoan.setMatKhau(rs.getString("matkhau"));
-
-            }
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-
-    public static boolean loadById(String ma) {
-        try {
-            Connection con = Database.getConnection();
-
-            String sql = "SELECT * FROM PMT WHERE maphieu = ?";
-
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, ma);
-
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                return true;
-            }
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return false;
-    }
-
     public static void Muonsach(String maD, DefaultTableModel model) {
         try {
             Connection con = Database.getConnection();
 
-            String sql1 = "INSERT INTO PMT (maphieu, madg, ngaylap, hantra) "
+            String sql1 = "INSERT INTO PMT (maphieu, masv, ngaylap, hantra) "
                     + "VALUES (?, ?, ?, ?)";
             PreparedStatement statement1 = con.prepareStatement(sql1);
             String sql2 = "INSERT INTO ChitietMT (masach, maphieu, hientrangmuon) "
@@ -300,7 +258,7 @@ public class Pmtcn {
             String sql = "SELECT COUNT(*) "
                     + "FROM PMT p "
                     + "JOIN ChitietMT ct ON p.maphieu = ct.maphieu "
-                    + "WHERE madg = ? AND ngaytra IS NULL ";
+                    + "WHERE masv = ? AND ngaytra IS NULL ";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, maD);
             ResultSet rs = statement.executeQuery();
@@ -333,5 +291,123 @@ public class Pmtcn {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return lastPmtId;
+    }
+
+    public static void loadAll(String masv, String tensach, String fromls, String tols, DefaultTableModel model) {
+        try {
+            Connection con = Database.getConnection();
+            String sql = "SELECT * "
+                    + "FROM PMT "
+                    + "JOIN ChitietMT ON PMT.maphieu = ChitietMT.maphieu "
+                    + "JOIN Sach ON ChitietMT.masach = Sach.masach "
+                    + "WHERE Sach.tensach LIKE ? AND PMT.masv LIKE ?";
+            if (fromls.isEmpty() && !tols.isEmpty()) {
+                sql += " AND PMT.ngaylap <= ?";
+            }
+            if (tols.isEmpty() && !fromls.isEmpty()) {
+                sql += " AND PMT.ngaylap >= ?";
+            }
+            if (!fromls.isEmpty() && !tols.isEmpty()) {
+                sql += " AND PMT.ngaylap BETWEEN ? AND ?";
+            }
+
+            sql += " ORDER BY PMT.ngaylap DESC";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(2, "%" + masv);
+            statement.setString(1, "%" + tensach + "%");
+            if (fromls.isEmpty() && !tols.isEmpty()) {
+                statement.setString(3, tols);
+            }
+            if (tols.isEmpty() && !fromls.isEmpty()) {
+                statement.setString(3, fromls);
+            }
+            if (!fromls.isEmpty() && !tols.isEmpty()) {
+                statement.setString(3, fromls);
+                statement.setString(4, tols);
+            };
+            ResultSet rs = statement.executeQuery();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                Sach sach = new Sach();
+                PMT pmt = new PMT();
+                ChitietMt chitiet = new ChitietMt();
+                pmt.setMasv(rs.getString("masv"));
+                pmt.setMaphieu(rs.getString("maphieu"));
+                sach.setMasach(rs.getString("masach"));
+                sach.setTensach(rs.getString("tensach"));
+                pmt.setNgaylap(rs.getString("ngaylap"));
+                pmt.setHantra(rs.getString("hantra"));
+                switch (rs.getString("hientrangmuon")) {
+                    case "1":
+                        sach.setHientrangtruoc("Mới");
+                        break;
+                    case "2":
+                        sach.setHientrangtruoc("Hỏng 25%");
+                        break;
+                    case "3":
+                        sach.setHientrangtruoc("Hỏng 50%");
+                        break;
+                    case "4":
+                        sach.setHientrangtruoc("Hỏng 75%");
+                        break;
+                    default:
+                        break;
+                }
+                if (rs.getString("hientrangsau") != null) {
+                    switch (rs.getString("hientrangsau")) {
+                        case "1":
+                            chitiet.setHientrangsau("Mới");
+                            break;
+                        case "2":
+                            chitiet.setHientrangsau("Hỏng 25%");
+                            break;
+                        case "3":
+                            chitiet.setHientrangsau("Hỏng 50%");
+                            break;
+                        case "4":
+                            chitiet.setHientrangsau("Hỏng 75%");
+                            break;
+                        default:
+                            chitiet.setHientrangsau("Chưa trả");
+                            break;
+                    }
+                }
+                if (rs.getString("ngaytra") == null) {
+                    chitiet.setNgaytra("Chưa trả");
+                } else {
+                    chitiet.setNgaytra(rs.getString("ngaytra"));
+                }
+                model.addRow(new Object[]{pmt.getMasv(), pmt.getMaphieu(), sach.getMasach(), sach.getTensach(), pmt.getNgaylap(),
+                    pmt.getHantra(), sach.getHientrangtruoc(), chitiet.getHientrangsau(), chitiet.getNgaytra()});
+            }
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public static boolean checkQuaHan(String maSV) {
+        boolean check = false;
+        try {
+            Connection con = Database.getConnection();
+            String sql1 = "SELECT * FROM PMT p "
+                    + "JOIN ChitietMT ct ON p.maphieu = ct.maphieu "
+                    + "WHERE p.masv = ? AND (ct.ngaytra IS NULL AND p.hantra < GETDATE()";
+            PreparedStatement statement = con.prepareStatement(sql1);
+            statement.setString(1, maSV);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                check = true;
+            }
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return check;
     }
 }

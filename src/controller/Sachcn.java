@@ -82,6 +82,9 @@ public class Sachcn {
 
             if (!rs.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "Không tìm thấy thông tin sách như trên ");
+                rs.close();
+                statement.close();
+                con.close();
                 return;
             }
 
@@ -177,7 +180,70 @@ public class Sachcn {
                     sach.setTrangthai("Đang rảnh");
                 }
 
-                model.addRow(new Object[]{sach.getMasach(), sach.getTensach(), sach.getTacgia(), sach.getTheloai(), sach.getNhaxb(), sach.getNamxb(), sach.getVitri(), sach.getHientrangtruoc(), sach.getTrangthai()});
+                model.addRow(new Object[]{sach.getMasach(), sach.getTensach(), sach.getTacgia(), sach.getTheloai(),
+                    sach.getNhaxb(), sach.getNamxb(), sach.getVitri(), sach.getHientrangtruoc(), sach.getTrangthai()});
+            }
+
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public static void loadBookByName(String ten, DefaultTableModel model) {
+        try {
+            Connection con = Database.getConnection();
+
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Sach WHERE tensach LIKE ? AND isdelete = 0");
+            statement.setString(1, "%" + ten + "%");
+            ResultSet rs = statement.executeQuery();
+
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy thông tin sách có tên " + ten);
+                rs.close();
+                statement.close();
+                con.close();
+                return;
+            }
+
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                Sach sach = new Sach();
+                sach.setMasach(rs.getString("masach"));
+                sach.setTensach(rs.getString("tensach"));
+                sach.setTacgia(rs.getString("tacgia"));
+                sach.setTheloai(rs.getString("theloai"));
+                sach.setNhaxb(rs.getString("nhaxb"));
+                sach.setNamxb(rs.getString("namxb"));
+                sach.setVitri(rs.getString("vitri"));
+                switch (rs.getString("hientrangtruoc")) {
+                    case "1":
+                        sach.setHientrangtruoc("Mới");
+                        break;
+                    case "2":
+                        sach.setHientrangtruoc("Hỏng 25%");
+                        break;
+                    case "3":
+                        sach.setHientrangtruoc("Hỏng 50%");
+                        break;
+                    case "4":
+                        sach.setHientrangtruoc("Hỏng 75%");
+                        break;
+                    default:
+                        break;
+                }
+
+                if (rs.getBoolean("trangthai")) {
+                    sach.setTrangthai("Đang mượn");
+                } else {
+                    sach.setTrangthai("Đang rảnh");
+                }
+
+                model.addRow(new Object[]{sach.getMasach(), sach.getTensach(), sach.getTacgia(), sach.getTheloai(),
+                    sach.getNhaxb(), sach.getNamxb(), sach.getVitri(), sach.getHientrangtruoc(), sach.getTrangthai()});
             }
 
             rs.close();

@@ -29,7 +29,7 @@ public class Dgmuonnhieu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên ĐG", "Số lần mượn"
+                "Tên sinh viên", "Số lần mượn"
             }
         ) {
             Class[] types = new Class [] {
@@ -67,10 +67,10 @@ public class Dgmuonnhieu extends javax.swing.JFrame {
         try {
             Connection con = Database.getConnection();
 
-            String sql4 = "SELECT d.tendg, COUNT(*) AS borrowCount FROM PMT p "
-                    + "JOIN Docgia d ON p.madg = d.madg "
+            String sql4 = "SELECT d.tensv, COUNT(*) AS borrowCount FROM PMT p "
+                    + "JOIN Sinhvien d ON p.masv = d.masv "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
-                    + "GROUP BY d.tendg "
+                    + "GROUP BY d.tensv "
                     + "ORDER BY borrowCount DESC";
             PreparedStatement statement = con.prepareStatement(sql4);
             statement.setString(1, from);
@@ -80,7 +80,7 @@ public class Dgmuonnhieu extends javax.swing.JFrame {
             model.setRowCount(0);
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getString("tendg"),
+                    rs.getString("tensv"),
                     rs.getInt("borrowCount")
                 });
             }

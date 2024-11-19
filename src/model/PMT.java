@@ -4,16 +4,16 @@ package model;
 
 public class PMT {
     private String maphieu;
-    private String madg;
+    private String masv;
     private String ngaylap;
     private String hantra;
 
     public PMT() {
     }
 
-    public PMT(String maphieu, String madg, String ngaylap, String hantra) {
+    public PMT(String maphieu, String masv, String ngaylap, String hantra) {
         this.maphieu = maphieu;
-        this.madg = madg;
+        this.masv = masv;
         this.ngaylap = ngaylap;
         this.hantra = hantra;
     }
@@ -26,12 +26,12 @@ public class PMT {
         this.maphieu = maphieu;
     }
 
-    public String getMadg() {
-        return madg;
+    public String getMasv() {
+        return masv;
     }
 
-    public void setMadg(String madg) {
-        this.madg = madg;
+    public void setMasv(String masv) {
+        this.masv = masv;
     }
 
     public String getNgaylap() {

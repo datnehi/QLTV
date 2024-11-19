@@ -30,7 +30,7 @@ public class Tongluotmuon extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã ĐG", "Mã phiếu", "Ngày mượn", "Số sách mượn"
+                "Mã sinh viên", "Mã phiếu", "Ngày mượn", "Số sách mượn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -52,10 +52,10 @@ public class Tongluotmuon extends javax.swing.JFrame {
         try {
             Connection con = Database.getConnection();
 
-            String sql = "SELECT p.madg, p.maphieu, p.ngaylap, COUNT(ct.masach) AS sosachmuon  FROM PMT p "
+            String sql = "SELECT p.masv, p.maphieu, p.ngaylap, COUNT(ct.masach) AS sosachmuon  FROM PMT p "
                 + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
                 + "WHERE p.ngaylap BETWEEN ? AND ? "
-                + "GROUP BY p.maphieu, p.madg, p.ngaylap";
+                + "GROUP BY p.maphieu, p.masv, p.ngaylap";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, from);
             statement.setString(2, to);
@@ -64,7 +64,7 @@ public class Tongluotmuon extends javax.swing.JFrame {
             model.setRowCount(0);
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getString("madg"),
+                    rs.getString("masv"),
                     rs.getString("maphieu"),
                     rs.getString("ngaylap"),
                     rs.getString("sosachmuon"),});

@@ -1,5 +1,5 @@
-﻿Create database QLTVD;
-use QLTVD;
+﻿Create database QLTV;
+use QLTV;
 
 
 CREATE TABLE Sach (
@@ -60,13 +60,14 @@ VALUES
 
 
 
-Create table Docgia(
-madg char(4) primary key not null, 
-tendg nvarchar(50) not null,
+Create table Sinhvien(
+masv char(7) primary key not null, 
+tensv nvarchar(50) not null,
 sdt char(10) not null,
-email nvarchar(50) not null
+email nvarchar(50) not null,
+matkhau nvarchar(50) not null
 );
-INSERT INTO Docgia (madg, tendg, sdt, email) 
+INSERT INTO Docgia (masv, tensv, sdt, email) 
 VALUES 
 ('DG01', N'Nguyễn Văn Hùng', '0123456789', N'nguyenvana@example.com'),
 ('DG02', N'Trần Thị Lan', '0987654321', N'tranthilan@example.com'),
@@ -130,13 +131,13 @@ VALUES
 ('DG60', N'Vũ Văn Toàn', '0987654329', N'vuvantoan@example.com');
 Create table PMT(
 maphieu char(4) primary key not null, 
-madg char(4) not null,
+masv char(7) not null,
 ngaylap date not null,
 hantra date not null, 
 );
 Alter table PMT 
 ADD constraint KPMT
-foreign key (madg) references Docgia(madg)
+foreign key (masv) references Sinhvien(masv)
 UPDATE PMT
 SET hantra = DATEADD(MONTH, 5, ngaylap);
 INSERT INTO PMT (maphieu, madg, ngaylap, hantra) VALUES
@@ -276,63 +277,4 @@ INSERT INTO ChitietMT (masach, maphieu, ngaytra, hientrangmuon, hientrangsau) VA
 ('S028', 'P059', '2024-04-01', '2', '2'), 
 ('S029', 'P060', '2024-04-15', '3', '4'); 
 
-
-
-
-
-
-
-
--- Theo tháng
-SELECT MONTH(ChitietMT.ngaytra) AS Thang, COUNT(*) AS SoLuotTraSach
-FROM ChitietMT
-GROUP BY MONTH(ChitietMT.ngaytra)
-ORDER BY Thang;
-
--- Theo quý
-SELECT DATEPART(QUARTER, ChitietMT.ngaytra) AS Quy, COUNT(*) AS SoLuotTraSach
-FROM ChitietMT
-GROUP BY DATEPART(QUARTER, ChitietMT.ngaytra)
-ORDER BY Quy;
-
--- Theo năm
-SELECT YEAR(ChitietMT.ngaytra) AS Nam, COUNT(*) AS SoLuotTraSach
-FROM ChitietMT
-GROUP BY YEAR(ChitietMT.ngaytra)
-ORDER BY Nam;
--- Theo từng độc giả
-SELECT Docgia.tendg, COUNT(*) AS SoLuotMuon
-FROM PMT 
-JOIN Docgia ON PMT.madg = Docgia.madg
-GROUP BY Docgia.tendg
-ORDER BY SoLuotMuon DESC;
--- Theo thể loại
-SELECT Sach.theloai, COUNT(*) AS SoLuotMuon
-FROM ChitietMT
-JOIN Sach ON ChitietMT.masach = Sach.masach
-GROUP BY Sach.theloai
-ORDER BY SoLuotMuon DESC;
--- Sách hỏng > 50
-SELECT Sach.masach, Sach.tensach, Sach.hientrangtruoc
-FROM Sach
-WHERE Sach.hientrangtruoc > '2'
--- Sách hỏng > 75 cần thay thế (Hay còn gọi là sách cần thay mới)
-SELECT Sach.masach, Sach.tensach, Sach.hientrangtruoc
-FROM Sach
-WHERE Sach.hientrangtruoc > '3'
--- thể loại được mượn nhiều nhất
-SELECT Sach.theloai, COUNT(*) AS SoLuotMuon
-FROM ChitietMT
-JOIN Sach ON ChitietMT.masach = Sach.masach
-GROUP BY Sach.theloai
-ORDER BY SoLuotMuon DESC
-OFFSET 0 ROWS FETCH NEXT 1 ROW ONLY;
-
--- Sách được mượn nhiều nhất
-SELECT Sach.tensach, COUNT(*) AS SoLuotMuon
-FROM ChitietMT
-JOIN Sach ON ChitietMT.masach = Sach.masach
-GROUP BY Sach.tensach
-ORDER BY SoLuotMuon DESC
-OFFSET 0 ROWS FETCH NEXT 1 ROW ONLY;
 

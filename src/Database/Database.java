@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    private static final String SERVER_NAME = "DESKTOP-1416ITI\\SQLEXPRESS02";
+    private static final String SERVER_NAME = "DESKTOP-ORLB431\\SQLEXPRESS";
     private static final String PORT = "1433";
     private static final String DATABASE_NAME = "QLTV";
     private static final String USERNAME = "sa";

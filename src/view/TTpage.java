@@ -5,7 +5,7 @@ import controller.Sachcn;
 import controller.Pmtcn;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import controller.Docgiacn;
+import controller.Sinhviencn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import model.Docgia;
+import model.Sinhvien;
 import model.Sach;
 
 public class TTpage extends javax.swing.JFrame {
@@ -26,6 +26,8 @@ public class TTpage extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) bangsach.getModel();
         Sachcn.loadBooks(model);
+        DefaultTableModel model1 = (DefaultTableModel) bangls.getModel();
+        Pmtcn.loadAll("", "", "", "", model1);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -65,10 +67,11 @@ public class TTpage extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         capnhat = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel49 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         bangsach = new javax.swing.JTable();
-        nhapma = new javax.swing.JTextField();
+        nhapten = new javax.swing.JTextField();
         timkiemsach = new javax.swing.JButton();
         xoasach = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -79,11 +82,11 @@ public class TTpage extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         tensachmuon = new javax.swing.JTextField();
-        madgmuon = new javax.swing.JTextField();
+        masvmuon = new javax.swing.JTextField();
         mapmtmuon = new javax.swing.JTextField();
         themmuon = new javax.swing.JButton();
         huythem = new javax.swing.JButton();
-        tendgmuon = new javax.swing.JTextField();
+        tensvmuon = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -103,19 +106,23 @@ public class TTpage extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         bangtra = new javax.swing.JTable();
         timtra = new javax.swing.JButton();
-        mapmttra = new javax.swing.JTextField();
-        madgtra = new javax.swing.JTextField();
+        tensachtra = new javax.swing.JTextField();
+        masvtra = new javax.swing.JTextField();
         ngaytra = new javax.swing.JTextField();
         trasach = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         bangls = new javax.swing.JTable();
-        madgls = new javax.swing.JTextField();
+        masvls = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        maphieuls = new javax.swing.JTextField();
+        tensachls = new javax.swing.JTextField();
         timkiemls = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
+        fromls = new com.toedter.calendar.JDateChooser();
+        tols = new com.toedter.calendar.JDateChooser();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -192,7 +199,6 @@ public class TTpage extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản Lý Sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel8.setAutoscrolls(true);
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -287,9 +293,13 @@ public class TTpage extends javax.swing.JFrame {
         });
         jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, -1));
 
+        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel49.setText("Quản lý sách");
+        jPanel8.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 30));
+
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 660, 420));
 
-        jLabel16.setText("Nhập Mã Sách");
+        jLabel16.setText("Nhập Tên Sách");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 20));
 
         bangsach.setModel(new javax.swing.table.DefaultTableModel(
@@ -318,7 +328,7 @@ public class TTpage extends javax.swing.JFrame {
         jScrollPane7.setViewportView(bangsach);
 
         jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 850, 540));
-        jPanel1.add(nhapma, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 310, -1));
+        jPanel1.add(nhapten, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 310, -1));
 
         timkiemsach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/8.png"))); // NOI18N
         timkiemsach.setText("Tìm Kiếm");
@@ -359,7 +369,7 @@ public class TTpage extends javax.swing.JFrame {
         jLabel19.setText("Mã Phiếu");
         jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        jLabel20.setText("Mã ĐG");
+        jLabel20.setText("Mã Sinh Viên");
         jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
 
         jLabel22.setText("Tên Sách");
@@ -368,12 +378,12 @@ public class TTpage extends javax.swing.JFrame {
         tensachmuon.setEditable(false);
         jPanel5.add(tensachmuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 200, 30));
 
-        madgmuon.addActionListener(new java.awt.event.ActionListener() {
+        masvmuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                madgmuonActionPerformed(evt);
+                masvmuonActionPerformed(evt);
             }
         });
-        jPanel5.add(madgmuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 200, 30));
+        jPanel5.add(masvmuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 200, 30));
 
         mapmtmuon.setEditable(false);
         mapmtmuon.addActionListener(new java.awt.event.ActionListener() {
@@ -401,8 +411,8 @@ public class TTpage extends javax.swing.JFrame {
         });
         jPanel5.add(huythem, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 140, 30));
 
-        tendgmuon.setEditable(false);
-        jPanel5.add(tendgmuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 200, 30));
+        tensvmuon.setEditable(false);
+        jPanel5.add(tensvmuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 200, 30));
 
         jLabel1.setText("Họ Và Tên");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 70, 30));
@@ -484,10 +494,10 @@ public class TTpage extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setText("Mã Phiếu ");
+        jLabel9.setText("Tên Sách");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
-        jLabel17.setText("Mã ĐG");
+        jLabel17.setText("Mã Sinh Viên");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         jLabel34.setText("Ngày");
@@ -527,8 +537,8 @@ public class TTpage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(timtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 100, 30));
-        jPanel2.add(mapmttra, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 190, -1));
-        jPanel2.add(madgtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 190, -1));
+        jPanel2.add(tensachtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 190, -1));
+        jPanel2.add(masvtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 190, -1));
         jPanel2.add(ngaytra, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 190, -1));
 
         trasach.setText("Trả Sách");
@@ -551,14 +561,14 @@ public class TTpage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "MPMT", "Mã Sách", "Tên Sách", "Ngày Mượn", "Hạn Trả", "Hiện Trạng Trước", "Hiện Trạng Sau ", "Ngày Trả"
+                "Mã Sinh Viên", "MPMT", "Mã Sách", "Tên Sách", "Ngày Mượn", "Hạn Trả", "Hiện Trạng Trước", "Hiện Trạng Sau ", "Ngày Trả"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -571,18 +581,18 @@ public class TTpage extends javax.swing.JFrame {
         });
         jScrollPane10.setViewportView(bangls);
 
-        jPanel3.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1570, 400));
+        jPanel3.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1570, 400));
 
-        madgls.addActionListener(new java.awt.event.ActionListener() {
+        masvls.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                madglsActionPerformed(evt);
+                masvlsActionPerformed(evt);
             }
         });
-        jPanel3.add(madgls, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 170, -1));
+        jPanel3.add(masvls, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 170, -1));
 
-        jLabel28.setText("Nhập Mã Phiếu");
-        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
-        jPanel3.add(maphieuls, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 170, -1));
+        jLabel28.setText("Tên sách");
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
+        jPanel3.add(tensachls, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 170, -1));
 
         timkiemls.setText("Tìm Kiếm");
         timkiemls.addActionListener(new java.awt.event.ActionListener() {
@@ -590,10 +600,22 @@ public class TTpage extends javax.swing.JFrame {
                 timkiemlsActionPerformed(evt);
             }
         });
-        jPanel3.add(timkiemls, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, -1, -1));
+        jPanel3.add(timkiemls, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 62, 90, 30));
 
-        jLabel24.setText("Nhập Mã ĐG");
-        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+        jLabel24.setText("Mã sinh viên");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+
+        fromls.setDateFormatString("yyyy-MM-dd");
+        jPanel3.add(fromls, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 40, 140, -1));
+
+        tols.setDateFormatString("yyyy-MM-dd");
+        jPanel3.add(tols, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 80, 140, -1));
+
+        jLabel50.setText("Từ ngày");
+        jPanel3.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, -1, -1));
+
+        jLabel51.setText("Đến ngày");
+        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, -1, -1));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/—Pngtree—clouds sky blue aesthetic pastel_2447709.png"))); // NOI18N
         jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
@@ -629,7 +651,7 @@ public class TTpage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã ĐG", "Mã phiếu", "Ngày mượn", "Hạn trả", "Mã sách"
+                "Mã sinh viên", "Mã phiếu", "Ngày mượn", "Hạn trả", "Mã sách"
             }
         ) {
             Class[] types = new Class [] {
@@ -761,6 +783,11 @@ public class TTpage extends javax.swing.JFrame {
         jPanel10.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         tongluottk.setEditable(false);
+        tongluottk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tongluottkActionPerformed(evt);
+            }
+        });
         jPanel10.add(tongluottk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, -1));
         jPanel10.add(from1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, -1));
         jPanel10.add(to1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, -1));
@@ -810,7 +837,7 @@ public class TTpage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã phiếu", "Mã sách", "Ngày mượn", "Hạn trả", "Mã ĐG"
+                "Mã phiếu", "Mã sách", "Ngày mượn", "Hạn trả", "Mã sinh viên"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -845,6 +872,11 @@ public class TTpage extends javax.swing.JFrame {
         jPanel13.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         tongquahan.setEditable(false);
+        tongquahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tongquahanActionPerformed(evt);
+            }
+        });
         jPanel13.add(tongquahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 110, -1));
         jPanel13.add(from6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, -1));
         jPanel13.add(to6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 140, -1));
@@ -862,7 +894,7 @@ public class TTpage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã ĐG", "Mã phiếu", "Ngày mượn", "Hạn trả", "Ngày Trả", "Mã sách"
+                "Mã sinh viên", "Mã phiếu", "Ngày mượn", "Hạn trả", "Ngày Trả", "Mã sách"
             }
         ) {
             Class[] types = new Class [] {
@@ -897,7 +929,7 @@ public class TTpage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Thống Kê", jPanel4);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1580, 650));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1590, 650));
 
         jButton2.setText("Đăng Xuất");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -924,31 +956,15 @@ public class TTpage extends javax.swing.JFrame {
             String maP = mapmtmuon.getText();
             String maS = masachmuon.getText();
             String tenS = tensachmuon.getText();
-            String maD = madgmuon.getText();
+            String maSV = masvmuon.getText();
             String hienTrang = (String) hientrangmuon.getSelectedItem();
             String ngayMuon = ngaymuon.getText();
             LocalDate ngayLapDate = LocalDate.parse(ngayMuon);
             LocalDate ngayHanTra = ngayLapDate.plusMonths(5);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             String hanTra = ngayHanTra.format(formatter);
-            if (maP.isEmpty() || tenS.isEmpty() || tendgmuon.getText().isEmpty()) {
+            if (tenS.isEmpty() || tensvmuon.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin");
-                return;
-            }
-            if (!maS.matches("S\\d{3}")) {
-                JOptionPane.showMessageDialog(null, "Mã sách phải theo định dạng S***.");
-                return;
-            }
-            if (!maD.matches("DG\\d{2}")) {
-                JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                return;
-            }
-            if (Docgiacn.loadById(maD) == null) {
-                JOptionPane.showMessageDialog(null, "Độc giả không tồn tại.");
-                return;
-            }
-            if (Sachcn.checktinhtrang(maS) == false || Sachcn.timma(maS) == null) {
-                JOptionPane.showMessageDialog(null, "Sách không tồn tại hoặc đang được mượn.");
                 return;
             }
 
@@ -959,7 +975,7 @@ public class TTpage extends javax.swing.JFrame {
                     return;
                 }
             }
-            int damuon = Pmtcn.Sosachchuatra(maD);
+            int damuon = Pmtcn.Sosachchuatra(maSV);
             if (damuon + model.getRowCount() >= 20) {
                 JOptionPane.showMessageDialog(null, "Bạn đã mượn hết 20 quyển sách.");
                 return;
@@ -1000,13 +1016,12 @@ public class TTpage extends javax.swing.JFrame {
     }//GEN-LAST:event_xoasachActionPerformed
 
     private void timkiemsachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timkiemsachActionPerformed
-        String ma = nhapma.getText();
-        if (ma.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Hãy nhập mã sách");
-        } else {
-            DefaultTableModel model = (DefaultTableModel) bangsach.getModel();
-            Sachcn.loadBookById(ma, model);
+        String ten = nhapten.getText();
+        if (ten.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hãy nhập tên sách");
         }
+        DefaultTableModel model = (DefaultTableModel) bangsach.getModel();
+        Sachcn.loadBookByName(ten, model);
     }//GEN-LAST:event_timkiemsachActionPerformed
 
     private void suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaActionPerformed
@@ -1035,6 +1050,9 @@ public class TTpage extends javax.swing.JFrame {
             if (sach == null) {
                 JOptionPane.showMessageDialog(null, "Không tìm thấy thông tin sách có mã " + maSach);
                 return;
+            } else if (Sachcn.checktinhtrang(maSach) == false) {
+                JOptionPane.showMessageDialog(null, "Sách  đang được mượn.");
+                return;
             } else {
                 tensachmuon.setText(sach.getTensach());
                 String currentStatus = sach.getHientrangtruoc();
@@ -1053,36 +1071,48 @@ public class TTpage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_masachmuonActionPerformed
 
-    private void madgmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_madgmuonActionPerformed
+    private void masvmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masvmuonActionPerformed
         try {
-            String maDG = madgmuon.getText().trim();
-            if (!maDG.matches("DG\\d{2}")) {
-                JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-            } else if (!maDG.isEmpty()) {
-                Docgia docgia = Docgiacn.loadById(maDG);
-                if (docgia == null) {
-                    JOptionPane.showMessageDialog(null, "Không tìm thấy thông tin độc giả có mã " + maDG);
-                    return;
-                }
-                tendgmuon.setText(docgia.getTendg());
+            String maSV = masvmuon.getText().trim();
+            if (!maSV.matches("\\d{7}")) {
+                JOptionPane.showMessageDialog(null, "Mã sinh vien phải có 7 số.");
+                return;
             }
+            Sinhvien sv = Sinhviencn.loadById(maSV);
+            if (sv == null) {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy thông tin sinh viên có mã " + maSV);
+                return;
+            }
+            if(Pmtcn.checkQuaHan(maSV)){
+                Sachquahan bang = new Sachquahan();
+                bang.setVisible(true);
+                bang.thongKe(maSV);
+                return;
+            }
+            int damuon = Pmtcn.Sosachchuatra(maSV);
+            if (damuon > 20) {
+                JOptionPane.showMessageDialog(null, "Bạn đã mượn hết 20 quyển sách.");
+                return;
+            }
+            tensvmuon.setText(sv.getTensv());
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }//GEN-LAST:event_madgmuonActionPerformed
+    }//GEN-LAST:event_masvmuonActionPerformed
 
     private void themvitriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themvitriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_themvitriActionPerformed
 
-    private void madglsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_madglsActionPerformed
+    private void masvlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masvlsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_madglsActionPerformed
+    }//GEN-LAST:event_masvlsActionPerformed
 
     private void huythemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huythemActionPerformed
 
-        madgmuon.setText("");
-        tendgmuon.setText("");
+        masvmuon.setText("");
+        tensvmuon.setText("");
         mapmtmuon.setText("");
         masachmuon.setText("");
         tensachmuon.setText("");
@@ -1095,21 +1125,23 @@ public class TTpage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Hãy thêm sách vào bảng");
                 return;
             }
-            String maD = madgmuon.getText();
-            if (Docgiacn.loadById(maD) == null) {
-                JOptionPane.showMessageDialog(this, "Hãy nhập chính xác thông tin độc giả.");
+            String maD = masvmuon.getText();
+            String tenSV = tensvmuon.getText();
+            if (tenSV.equals("")) {
+                JOptionPane.showMessageDialog(this, "Hãy nhập chính xác thông tin sinh viên.");
                 return;
             }
-            int choice = JOptionPane.showConfirmDialog(null, "Hãy xác nhậm độc giả có mã " + maD + " mượn số sách này.", "Xác nhận", JOptionPane.YES_NO_OPTION);
+            int choice = JOptionPane.showConfirmDialog(null, "Hãy xác nhậm sinh viên có mã " + maD 
+                    + " mượn số sách này.", "Xác nhận", JOptionPane.YES_NO_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 DefaultTableModel model = (DefaultTableModel) bangmuon.getModel();
                 Pmtcn.Muonsach(maD, model);
                 JOptionPane.showMessageDialog(this, "Mượn sách thành công.");
-                DefaultTableModel model1 = (DefaultTableModel) bangsach.getModel();
-                Sachcn.loadBooks(model1);
+                jButton1ActionPerformed(evt);
+                timkiemlsActionPerformed(evt);
                 model.setRowCount(0);
-                madgmuon.setText("");
-                tendgmuon.setText("");
+                masvmuon.setText("");
+                tensvmuon.setText("");
                 mapmtmuon.setText(Sachcn.incrementCode(Pmtcn.findLastPmtId()));
                 masachmuon.setText("");
                 tensachmuon.setText("");
@@ -1123,8 +1155,8 @@ public class TTpage extends javax.swing.JFrame {
     private void huymuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huymuonActionPerformed
         DefaultTableModel model = (DefaultTableModel) bangmuon.getModel();
         model.setRowCount(0);
-        madgmuon.setText("");
-        tendgmuon.setText("");
+        masvmuon.setText("");
+        tensvmuon.setText("");
         mapmtmuon.setText("");
         masachmuon.setText("");
         tensachmuon.setText("");
@@ -1133,42 +1165,21 @@ public class TTpage extends javax.swing.JFrame {
 
     private void timtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timtraActionPerformed
         try {
-            String maD = madgtra.getText().trim();
-            String maP = mapmttra.getText().trim();
-            if (maP.equals("") && maD.equals("")) {
+            String maSV = masvtra.getText().trim();
+            String tenS = tensachtra.getText().trim();
+            if (tenS.equals("") && maSV.equals("")) {
                 JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin.");
+            }
+            if (!maSV.matches("\\d{7}")) {
+                JOptionPane.showMessageDialog(null, "Hãy nhập mã sinh viên có 7 số.");
                 return;
             }
-            if (!maD.matches("DG\\d{2}") && maP.equals("")) {
-                JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                return;
-            }
-            if (!maP.matches("P\\d{3}") && maD.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                return;
-            }
-            if (!maD.matches("DG\\d{2}") && !maP.matches("P\\d{3}")) {
-                if (!maD.matches("DG\\d{2}")) {
-                    JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                    return;
-                }
-                if (!maP.matches("P\\d{3}")) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                    return;
-                }
-            }
-            if (Docgiacn.loadById(maD) == null && !maD.equals("")) {
-                JOptionPane.showMessageDialog(null, "Độc giả không tồn tại.");
-                return;
-            }
-            if (Pmtcn.loadById(maP) == false && !maP.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả không tồn tại.");
+            if (Sinhviencn.loadById(maSV) == null && !maSV.equals("")) {
+                JOptionPane.showMessageDialog(null, "Sinh viên không tồn tại.");
                 return;
             }
             DefaultTableModel model = (DefaultTableModel) bangtra.getModel();
-            Pmtcn.Loadttm(maD, maP, model);
-            DefaultTableModel model1 = (DefaultTableModel) bangsach.getModel();
-            Sachcn.loadBooks(model1);
+            Pmtcn.Loadttm(maSV, tenS, model);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -1185,13 +1196,14 @@ public class TTpage extends javax.swing.JFrame {
                 return;
             }
 
-            int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn trả các sách đã chọn?", "Xác nhận trả", JOptionPane.YES_NO_OPTION);
+            int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn trả các sách đã chọn?",
+                    "Xác nhận trả", JOptionPane.YES_NO_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 String ngayTra = ngaytra.getText();
                 Pmtcn.Trasach(selectedRows, ngayTra, model);
-                Pmtcn.Loadttm(madgtra.getText().trim(), mapmttra.getText().trim(), model);
-                DefaultTableModel model1 = (DefaultTableModel) bangsach.getModel();
-                Sachcn.loadBooks(model1);
+                Pmtcn.Loadttm(masvtra.getText().trim(), tensachtra.getText().trim(), model);
+                jButton1ActionPerformed(evt);
+                timkiemlsActionPerformed(evt);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -1200,40 +1212,28 @@ public class TTpage extends javax.swing.JFrame {
 
     private void timkiemlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timkiemlsActionPerformed
         try {
-            String maD = madgls.getText();
-            String maP = maphieuls.getText();
-            if (maP.equals("") && maD.equals("")) {
-                JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin.");
+            String maSV = masvls.getText();
+            String tenS = tensachls.getText();
+            Date fromDate = fromls.getDate();
+            Date toDate = tols.getDate();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String fromDateStr = "";
+            if (fromDate != null) {
+                fromDateStr = sdf.format(fromDate);
+            }
+            String toDateStr = "";
+            if (toDate != null) {
+                toDateStr = sdf.format(toDate);
+            }
+
+            if (Sinhviencn.loadById(maSV) == null && !maSV.equals("")) {
+                JOptionPane.showMessageDialog(null, "Sinh viên không tồn tại.");
                 return;
             }
-            if (!maD.matches("DG\\d{2}") && maP.equals("")) {
-                JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                return;
-            }
-            if (!maP.matches("P\\d{3}") && maD.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                return;
-            }
-            if (!maD.matches("DG\\d{2}") && !maP.matches("P\\d{3}")) {
-                if (!maD.matches("DG\\d{2}")) {
-                    JOptionPane.showMessageDialog(null, "Mã độc giả phải theo định dạng DG**.");
-                    return;
-                }
-                if (!maP.matches("P\\d{3}")) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn trả phải theo định dạng P***.");
-                    return;
-                }
-            }
-            if (Docgiacn.loadById(maD) == null && !maD.equals("")) {
-                JOptionPane.showMessageDialog(null, "Độc giả không tồn tại.");
-                return;
-            }
-            if (Pmtcn.loadById(maP) == false && !maP.equals("")) {
-                JOptionPane.showMessageDialog(null, "Phiếu mượn trả không tồn tại.");
-                return;
-            }
+            
             DefaultTableModel model = (DefaultTableModel) bangls.getModel();
-            Pmtcn.ttMuonTra(maD, maP, model);
+            Pmtcn.loadAll(maSV, tenS, fromDateStr, toDateStr, model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -1299,7 +1299,8 @@ public class TTpage extends javax.swing.JFrame {
                     Sachcn.loadBooks(model);
                 } else {
                     System.out.println("3");
-                    JOptionPane.showMessageDialog(null, "Không được thêm mã sách này. Hãy them sách từ mã " + Sachcn.incrementCode(Sachcn.findLastBookId()));
+                    JOptionPane.showMessageDialog(null, "Không được thêm mã sách này. Hãy them sách từ mã " 
+                            + Sachcn.incrementCode(Sachcn.findLastBookId()));
                 }
 
                 themma.setText("");
@@ -1321,17 +1322,17 @@ public class TTpage extends javax.swing.JFrame {
             Date fromDate = from.getDate();
             Date toDate = to.getDate();
 
+            if (fromDate == null || toDate == null) {
+                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
+                return;
+            }
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String fromDateStr = sdf.format(fromDate);
             String toDateStr = sdf.format(toDate);
 
-            if (toDateStr.equals("") || fromDateStr.equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-
             Connection con = Database.getConnection();
-            String sql = "SELECT TOP 1 d.tendg FROM Docgia d "
+            String sql = "SELECT TOP 1 d.tendg FROM Sinhvien d "
                     + "JOIN PMT p ON p.madg = d.madg "
                     + "JOIN ChitietMt ct ON ct.maphieu = p.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
@@ -1394,14 +1395,14 @@ public class TTpage extends javax.swing.JFrame {
             Date fromDate = from1.getDate();
             Date toDate = to1.getDate();
 
+            if (fromDate == null || toDate == null) {
+                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
+                return;
+            }
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String fromDateStr = sdf.format(fromDate);
             String toDateStr = sdf.format(toDate);
-
-            if (toDateStr.equals("") || fromDateStr.equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
 
             Connection con = Database.getConnection();
 
@@ -1454,14 +1455,14 @@ public class TTpage extends javax.swing.JFrame {
             Date fromDate = from2.getDate();
             Date toDate = to2.getDate();
 
+            if (fromDate == null || toDate == null) {
+                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
+                return;
+            }
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String fromDateStr = sdf.format(fromDate);
             String toDateStr = sdf.format(toDate);
-
-            if (toDateStr.equals("") || fromDateStr.equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
 
             Connection con = Database.getConnection();
 
@@ -1520,14 +1521,14 @@ public class TTpage extends javax.swing.JFrame {
             Date fromDate = from3.getDate();
             Date toDate = to3.getDate();
 
+            if (fromDate == null || toDate == null) {
+                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
+                return;
+            }
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String fromDateStr = sdf.format(fromDate);
             String toDateStr = sdf.format(toDate);
-
-            if (toDateStr.equals("") || fromDateStr.equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
 
             Connection con = Database.getConnection();
 
@@ -1769,6 +1770,14 @@ public class TTpage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hientrangmuonActionPerformed
 
+    private void tongquahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongquahanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tongquahanActionPerformed
+
+    private void tongluottkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongluottkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tongluottkActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1792,6 +1801,7 @@ public class TTpage extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser from3;
     private com.toedter.calendar.JDateChooser from5;
     private com.toedter.calendar.JDateChooser from6;
+    private com.toedter.calendar.JDateChooser fromls;
     private javax.swing.JComboBox hientrangmuon;
     private javax.swing.JButton huycapnhat;
     private javax.swing.JButton huymuon;
@@ -1848,7 +1858,10 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1874,22 +1887,22 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField madgls;
-    private javax.swing.JTextField madgmuon;
-    private javax.swing.JTextField madgtra;
-    private javax.swing.JTextField maphieuls;
     private javax.swing.JTextField mapmtmuon;
-    private javax.swing.JTextField mapmttra;
     private javax.swing.JTextField masachmuon;
+    private javax.swing.JTextField masvls;
+    private javax.swing.JTextField masvmuon;
+    private javax.swing.JTextField masvtra;
     private javax.swing.JButton muonsach;
     private javax.swing.JTextField ngaymuon;
     private javax.swing.JTextField ngaytra;
-    private javax.swing.JTextField nhapma;
+    private javax.swing.JTextField nhapten;
     private javax.swing.JButton sua;
-    private javax.swing.JTextField tendgmuon;
     private javax.swing.JTextField tendgtk;
+    private javax.swing.JTextField tensachls;
     private javax.swing.JTextField tensachmuon;
     private javax.swing.JTextField tensachtk;
+    private javax.swing.JTextField tensachtra;
+    private javax.swing.JTextField tensvmuon;
     private javax.swing.JTextField theloaitk;
     private javax.swing.JComboBox themhientrang;
     private javax.swing.JTextField themma;
@@ -1909,6 +1922,7 @@ public class TTpage extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser to3;
     private com.toedter.calendar.JDateChooser to5;
     private com.toedter.calendar.JDateChooser to6;
+    private com.toedter.calendar.JDateChooser tols;
     private javax.swing.JTextField tongchuatra;
     private javax.swing.JTextField tongdenhan;
     private javax.swing.JTextField tongluottk;
