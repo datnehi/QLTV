@@ -1,5 +1,6 @@
 package view;
 
+import controller.Thuthucn;
 import javax.swing.*;
 
 public class DangNhap extends javax.swing.JFrame {
@@ -15,7 +16,7 @@ public class DangNhap extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Dangnhap = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -35,13 +36,13 @@ public class DangNhap extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 110, 30));
 
-        jButton1.setText("Đăng Nhập");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Dangnhap.setText("Đăng Nhập");
+        Dangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DangnhapActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 220, 30));
+        getContentPane().add(Dangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 220, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Đăng Nhập Tài Khoản Thủ Thư");
@@ -83,19 +84,19 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TendangnhapActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void DangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DangnhapActionPerformed
         if (Tendangnhap.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Vui long nhap ten dang nhap");
         } else if (matkhau.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Vui long nhap mat khau");
-        } else if (Tendangnhap.getText().equals("admin") && matkhau.getText().equals("123456")) {
+        } else if (Thuthucn.loginTT(Tendangnhap.getText(), matkhau.getText())) {
             dispose();
             TTpage ttpage = new TTpage();
             ttpage.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Tai khoan sai");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_DangnhapActionPerformed
 
     private void matkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matkhauActionPerformed
         // TODO add your handling code here:
@@ -118,8 +119,8 @@ public class DangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Dangnhap;
     private javax.swing.JTextField Tendangnhap;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

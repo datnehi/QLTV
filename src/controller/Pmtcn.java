@@ -395,7 +395,7 @@ public class Pmtcn {
             Connection con = Database.getConnection();
             String sql1 = "SELECT * FROM PMT p "
                     + "JOIN ChitietMT ct ON p.maphieu = ct.maphieu "
-                    + "WHERE p.masv = ? AND (ct.ngaytra IS NULL AND p.hantra < GETDATE()";
+                    + "WHERE p.masv = ? AND (ct.ngaytra IS NULL AND p.hantra < GETDATE())";
             PreparedStatement statement = con.prepareStatement(sql1);
             statement.setString(1, maSV);
             ResultSet rs = statement.executeQuery();

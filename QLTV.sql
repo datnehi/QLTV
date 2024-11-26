@@ -58,7 +58,25 @@ VALUES
 ('S038', N'Chí Phèo', N'Tiểu thuyết', N'NXB Văn học', '1936', N'Nam Cao', 'T2', 1, '1', 0),
 ('S039', N'Số đỏ', N'Tiểu thuyết', N'NXB Kim Đồng', '1937', N'Vũ Trọng Phụng', 'T3', 0, '1', 0);
 
-
+Create table Thuthu(
+matt char(4) primary key not null, 
+tentt nvarchar(50) not null,
+sdt char(10) not null,
+email nvarchar(50) not null,
+matkhau nvarchar(50) not null
+);
+INSERT INTO Thuthu (matt, tentt, sdt, email, matkhau)
+VALUES 
+('1001', N'Nguyễn Văn A', '0123456789', 'nguyenvana@example.com', '123456'),
+('1002', N'Lê Thị B', '0987654321', 'lethib@example.com', '123456'),
+('1003', N'Phạm Văn C', '0912345678', 'phamvanc@example.com', '123456'),
+('1004', N'Trần Thị D', '0934567890', 'tranthid@example.com', '123456'),
+('1005', N'Hoàng Văn E', '0945678901', 'hoangvane@example.com', '123456'),
+('1006', N'Vũ Thị F', '0956789012', 'vuthif@example.com', '123456'),
+('1007', N'Phan Văn G', '0967890123', 'phanvang@example.com', '123456'),
+('1008', N'Đỗ Thị H', '0978901234', 'dothih@example.com', '123456'),
+('1009', N'Lý Văn I', '0989012345', 'lyvani@example.com', '123456'),
+('1010', N'Tạ Thị K', '0990123456', 'tatk@example.com', '123456');
 
 Create table Sinhvien(
 masv char(7) primary key not null, 
@@ -129,15 +147,14 @@ VALUES
 ('1000058', N'Phan Văn Nam', '0987654327', N'phanvannam@example.com',N'123456'),
 ('1000059', N'Ngô Thị Lan', '0987654328', N'ngothilan@example.com',N'123456'),
 ('1000060', N'Vũ Văn Toàn', '0987654329', N'vuvantoan@example.com',N'123456');
+
 Create table PMT(
 maphieu char(4) primary key not null, 
 masv char(7) not null,
 ngaylap date not null,
 hantra date not null, 
-);
-Alter table PMT 
-ADD constraint KPMT
 foreign key (masv) references Sinhvien(masv)
+);
 UPDATE PMT
 SET hantra = DATEADD(MONTH, 5, ngaylap);
 INSERT INTO PMT (maphieu, masv, ngaylap, hantra) VALUES
@@ -201,8 +218,6 @@ INSERT INTO PMT (maphieu, masv, ngaylap, hantra) VALUES
 ('P058', '1000058', '2024-03-15', '2024-05-28'),
 ('P059', '1000059', '2024-04-01', '2024-05-28'),
 ('P060', '1000060', '2024-04-15', '2024-05-28');
-
-
 
 Create table ChitietMT(
 masach char(4) not null,
