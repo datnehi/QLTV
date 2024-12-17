@@ -131,30 +131,6 @@ public class TTpage extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         bang1 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        tendgtk = new javax.swing.JTextField();
-        from = new com.toedter.calendar.JDateChooser();
-        to = new com.toedter.calendar.JDateChooser();
-        jButton6 = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        tensachtk = new javax.swing.JTextField();
-        from2 = new com.toedter.calendar.JDateChooser();
-        to2 = new com.toedter.calendar.JDateChooser();
-        jButton8 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel36 = new javax.swing.JLabel();
-        theloaitk = new javax.swing.JTextField();
-        from3 = new com.toedter.calendar.JDateChooser();
-        to3 = new com.toedter.calendar.JDateChooser();
-        jButton9 = new javax.swing.JButton();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         tongluottk = new javax.swing.JTextField();
@@ -675,102 +651,6 @@ public class TTpage extends javax.swing.JFrame {
 
         jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 430, 390));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel26.setText("Độc giả mượn nhiều nhất:");
-        jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        tendgtk.setEditable(false);
-        jPanel6.add(tendgtk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, -1));
-        jPanel6.add(from, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, -1));
-        jPanel6.add(to, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, -1));
-
-        jButton6.setText("Tìm Kiếm");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-
-        jLabel25.setText("Từ ngày:");
-        jPanel6.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel45.setText("Đến ngày:");
-        jPanel6.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
-
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 310, 140));
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel14MouseClicked(evt);
-            }
-        });
-        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel33.setText("Sách được yêu thích nhất:");
-        jPanel14.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        tensachtk.setEditable(false);
-        jPanel14.add(tensachtk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, -1));
-        jPanel14.add(from2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, -1));
-        jPanel14.add(to2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, -1));
-
-        jButton8.setText("Tìm Kiếm");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel14.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-
-        jLabel15.setText("Từ ngày:");
-        jPanel14.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel44.setText("Đến ngày:");
-        jPanel14.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
-
-        jPanel4.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 310, 140));
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel15MouseClicked(evt);
-            }
-        });
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel36.setText("Thể loại được yêu thích nhất:");
-        jPanel15.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        theloaitk.setEditable(false);
-        jPanel15.add(theloaitk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, -1));
-        jPanel15.add(from3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, -1));
-        jPanel15.add(to3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, -1));
-
-        jButton9.setText("Tìm Kiếm");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel15.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-
-        jLabel27.setText("Từ ngày:");
-        jPanel15.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel46.setText("Đến ngày:");
-        jPanel15.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
-
-        jPanel4.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 310, 140));
-
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -806,7 +686,7 @@ public class TTpage extends javax.swing.JFrame {
         jLabel43.setText("Đến ngày:");
         jPanel10.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
-        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 310, 140));
+        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 310, 140));
 
         jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1317,70 +1197,6 @@ public class TTpage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_capnhatActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        try {
-            Date fromDate = from.getDate();
-            Date toDate = to.getDate();
-
-            if (fromDate == null || toDate == null) {
-                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
-                return;
-            }
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String fromDateStr = sdf.format(fromDate);
-            String toDateStr = sdf.format(toDate);
-
-            Connection con = Database.getConnection();
-            String sql = "SELECT TOP 1 d.tensv FROM Sinhvien d "
-                    + "JOIN PMT p ON p.masv = d.masv "
-                    + "JOIN ChitietMt ct ON ct.maphieu = p.maphieu "
-                    + "WHERE p.ngaylap BETWEEN ? AND ? "
-                    + "GROUP BY d.masv, d.tensv "
-                    + "ORDER BY COUNT(*) DESC";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, fromDateStr);
-            statement.setString(2, toDateStr);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                tendgtk.setText(rs.getString("tensv"));
-            } else {
-                tendgtk.setText("Không có");
-            }
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        try {
-            if (tendgtk.getText().equals("Không có")) {
-                JOptionPane.showMessageDialog(null, "Không có lượt mượn trong khoảng thời gian này.");
-                return;
-            }
-            if (tendgtk.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-            Dgmuonnhieu bang = new Dgmuonnhieu();
-            bang.setVisible(true);
-            Date fromDate = from.getDate();
-            Date toDate = to.getDate();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String from = sdf.format(fromDate);
-            String to = sdf.format(toDate);
-            bang.Thongke(from, to);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jPanel6MouseClicked
-
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
 
     }//GEN-LAST:event_jPanel9MouseClicked
@@ -1449,138 +1265,6 @@ public class TTpage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_jPanel10MouseClicked
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        try {
-            Date fromDate = from2.getDate();
-            Date toDate = to2.getDate();
-
-            if (fromDate == null || toDate == null) {
-                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
-                return;
-            }
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String fromDateStr = sdf.format(fromDate);
-            String toDateStr = sdf.format(toDate);
-
-            Connection con = Database.getConnection();
-
-            String sql = "SELECT TOP 1 s.tensach FROM ChitietMt ct "
-                    + "JOIN Sach s ON s.masach = ct.masach "
-                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
-                    + "WHERE p.ngaylap BETWEEN ? AND ? "
-                    + "GROUP BY s.tensach "
-                    + "ORDER BY COUNT(*) DESC";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, fromDateStr);
-            statement.setString(2, toDateStr);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                tensachtk.setText(rs.getString("tensach"));
-
-            } else {
-                tensachtk.setText("Không có");
-            }
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jPanel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseClicked
-        try {
-            if (tensachtk.getText().equals("Không có")) {
-                JOptionPane.showMessageDialog(null, "Không có lượt mượn trong khoảng thời gian này.");
-                return;
-            }
-            if (tensachtk.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-            Sachyeuthich bang = new Sachyeuthich();
-            bang.setVisible(true);
-            Date fromDate = from2.getDate();
-            Date toDate = to2.getDate();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String from = sdf.format(fromDate);
-            String to = sdf.format(toDate);
-            bang.Thongke(from, to);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jPanel14MouseClicked
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        try {
-            Date fromDate = from3.getDate();
-            Date toDate = to3.getDate();
-
-            if (fromDate == null || toDate == null) {
-                JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
-                return;
-            }
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String fromDateStr = sdf.format(fromDate);
-            String toDateStr = sdf.format(toDate);
-
-            Connection con = Database.getConnection();
-
-            String sql = "SELECT TOP 1 s.theloai FROM ChitietMt ct "
-                    + "JOIN Sach s ON s.masach = ct.masach "
-                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
-                    + "WHERE p.ngaylap BETWEEN ? AND ? "
-                    + "GROUP BY s.theloai "
-                    + "ORDER BY COUNT(*) DESC";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, fromDateStr);
-            statement.setString(2, toDateStr);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                theloaitk.setText(rs.getString("theloai"));
-
-            } else {
-                theloaitk.setText("Không có");
-            }
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
-        try {
-            if (theloaitk.getText().equals("Không có")) {
-                JOptionPane.showMessageDialog(null, "Không có lượt mượn trong khoảng thời gian này.");
-                return;
-            }
-            if (theloaitk.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-            Tlyeuthich bang = new Tlyeuthich();
-            bang.setVisible(true);
-            Date fromDate = from3.getDate();
-            Date toDate = to3.getDate();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String from = sdf.format(fromDate);
-            String to = sdf.format(toDate);
-            bang.Thongke(from, to);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jPanel15MouseClicked
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         try {
@@ -1795,10 +1479,7 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JTable bangsach;
     private javax.swing.JTable bangtra;
     private javax.swing.JButton capnhat;
-    private com.toedter.calendar.JDateChooser from;
     private com.toedter.calendar.JDateChooser from1;
-    private com.toedter.calendar.JDateChooser from2;
-    private com.toedter.calendar.JDateChooser from3;
     private com.toedter.calendar.JDateChooser from5;
     private com.toedter.calendar.JDateChooser from6;
     private com.toedter.calendar.JDateChooser fromls;
@@ -1811,17 +1492,13 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1832,19 +1509,14 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1853,9 +1525,6 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -1870,13 +1539,10 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1897,13 +1563,10 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JTextField ngaytra;
     private javax.swing.JTextField nhapten;
     private javax.swing.JButton sua;
-    private javax.swing.JTextField tendgtk;
     private javax.swing.JTextField tensachls;
     private javax.swing.JTextField tensachmuon;
-    private javax.swing.JTextField tensachtk;
     private javax.swing.JTextField tensachtra;
     private javax.swing.JTextField tensvmuon;
-    private javax.swing.JTextField theloaitk;
     private javax.swing.JComboBox themhientrang;
     private javax.swing.JTextField themma;
     private javax.swing.JButton themmuon;
@@ -1916,10 +1579,7 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JButton timkiemls;
     private javax.swing.JButton timkiemsach;
     private javax.swing.JButton timtra;
-    private com.toedter.calendar.JDateChooser to;
     private com.toedter.calendar.JDateChooser to1;
-    private com.toedter.calendar.JDateChooser to2;
-    private com.toedter.calendar.JDateChooser to3;
     private com.toedter.calendar.JDateChooser to5;
     private com.toedter.calendar.JDateChooser to6;
     private com.toedter.calendar.JDateChooser tols;
