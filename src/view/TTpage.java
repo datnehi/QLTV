@@ -128,37 +128,27 @@ public class TTpage extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         tongdenhan = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         bang1 = new javax.swing.JTable();
+        jPanel11 = new javax.swing.JPanel();
+        from2 = new com.toedter.calendar.JDateChooser();
+        to2 = new com.toedter.calendar.JDateChooser();
+        thongKe = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         tongluottk = new javax.swing.JTextField();
-        from1 = new com.toedter.calendar.JDateChooser();
-        to1 = new com.toedter.calendar.JDateChooser();
-        jButton7 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         tongchuatra = new javax.swing.JTextField();
-        from5 = new com.toedter.calendar.JDateChooser();
-        to5 = new com.toedter.calendar.JDateChooser();
-        jButton11 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         bang3 = new javax.swing.JTable();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         tongquahan = new javax.swing.JTextField();
-        from6 = new com.toedter.calendar.JDateChooser();
-        to6 = new com.toedter.calendar.JDateChooser();
-        jButton12 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         bang2 = new javax.swing.JTable();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
@@ -167,7 +157,6 @@ public class TTpage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1600, 700));
-        setPreferredSize(new java.awt.Dimension(1600, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -609,18 +598,10 @@ public class TTpage extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel35.setText("Số sách gần đến hạn:");
-        jPanel9.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel9.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
         tongdenhan.setEditable(false);
-        jPanel9.add(tongdenhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 110, -1));
-
-        jButton10.setText("Tìm Kiếm");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
+        jPanel9.add(tongdenhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 110, -1));
 
         bang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -647,9 +628,35 @@ public class TTpage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(bang1);
 
-        jPanel9.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 410, 270));
+        jPanel9.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 410, 270));
 
-        jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 430, 390));
+        jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 430, 350));
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+        });
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel11.add(from2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 140, -1));
+        jPanel11.add(to2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 140, -1));
+
+        thongKe.setText("Thống kê");
+        thongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thongKeActionPerformed(evt);
+            }
+        });
+        jPanel11.add(thongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+
+        jLabel15.setText("Từ ngày:");
+        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jLabel44.setText("Đến ngày:");
+        jPanel11.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 410, 80));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -668,25 +675,9 @@ public class TTpage extends javax.swing.JFrame {
                 tongluottkActionPerformed(evt);
             }
         });
-        jPanel10.add(tongluottk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, -1));
-        jPanel10.add(from1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, -1));
-        jPanel10.add(to1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 140, -1));
+        jPanel10.add(tongluottk, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 110, -1));
 
-        jButton7.setText("Tìm Kiếm");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-
-        jLabel2.setText("Từ ngày:");
-        jPanel10.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel43.setText("Đến ngày:");
-        jPanel10.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
-
-        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 310, 140));
+        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 60));
 
         jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -697,20 +688,15 @@ public class TTpage extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel40.setText("Số sách chưa trả:");
-        jPanel12.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel12.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         tongchuatra.setEditable(false);
-        jPanel12.add(tongchuatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 110, -1));
-        jPanel12.add(from5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, -1));
-        jPanel12.add(to5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 140, -1));
-
-        jButton11.setText("Tìm Kiếm");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        tongchuatra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                tongchuatraActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+        jPanel12.add(tongchuatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 110, -1));
 
         bang3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -730,15 +716,9 @@ public class TTpage extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(bang3);
 
-        jPanel12.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 400, 260));
+        jPanel12.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 400, 260));
 
-        jLabel42.setText("Từ ngày:");
-        jPanel12.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        jLabel48.setText("Đến ngày:");
-        jPanel12.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
-
-        jPanel4.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 430, 390));
+        jPanel4.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 430, 340));
 
         jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -749,7 +729,7 @@ public class TTpage extends javax.swing.JFrame {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel41.setText("Số sách quá hạn:");
-        jPanel13.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel13.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         tongquahan.setEditable(false);
         tongquahan.addActionListener(new java.awt.event.ActionListener() {
@@ -757,17 +737,7 @@ public class TTpage extends javax.swing.JFrame {
                 tongquahanActionPerformed(evt);
             }
         });
-        jPanel13.add(tongquahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 110, -1));
-        jPanel13.add(from6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, -1));
-        jPanel13.add(to6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 140, -1));
-
-        jButton12.setText("Tìm Kiếm");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+        jPanel13.add(tongquahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 110, -1));
 
         bang2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -794,15 +764,9 @@ public class TTpage extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(bang2);
 
-        jPanel13.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 410, 250));
+        jPanel13.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 410, 250));
 
-        jLabel39.setText("Từ ngày:");
-        jPanel13.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        jLabel47.setText("Đến ngày:");
-        jPanel13.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
-
-        jPanel4.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 430, 390));
+        jPanel4.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 430, 330));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/—Pngtree—clouds sky blue aesthetic pastel_2447709.png"))); // NOI18N
         jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1940, -1));
@@ -1206,10 +1170,58 @@ public class TTpage extends javax.swing.JFrame {
         Sachcn.loadBooks(model);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
         try {
-            Date fromDate = from1.getDate();
-            Date toDate = to1.getDate();
+            if (tongluottk.getText().equals("0")) {
+                JOptionPane.showMessageDialog(null, "Không có lượt mượn trong khoảng thời gian này.");
+                return;
+            }
+            if (tongluottk.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
+                return;
+            }
+            Tongluotmuon bang = new Tongluotmuon();
+            bang.setVisible(true);
+            Date fromDate = from2.getDate();
+            Date toDate = to2.getDate();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String from = sdf.format(fromDate);
+            String to = sdf.format(toDate);
+            bang.Thongke(from, to);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jPanel10MouseClicked
+
+    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel12MouseClicked
+
+    private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel13MouseClicked
+
+    private void mapmtmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapmtmuonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mapmtmuonActionPerformed
+
+    private void hientrangmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hientrangmuonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hientrangmuonActionPerformed
+
+    private void tongquahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongquahanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tongquahanActionPerformed
+
+    private void tongluottkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongluottkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tongluottkActionPerformed
+
+    private void thongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thongKeActionPerformed
+        try {
+            Date fromDate = from2.getDate();
+            Date toDate = to2.getDate();
 
             if (fromDate == null || toDate == null) {
                 JOptionPane.showMessageDialog(null, "Hãy chọn khoảng thời gian.");
@@ -1233,166 +1245,7 @@ public class TTpage extends javax.swing.JFrame {
                 totalBorrows = rs.getInt("totalBorrows");
             }
             tongluottk.setText(String.valueOf(totalBorrows));
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-        try {
-            if (tongluottk.getText().equals("0")) {
-                JOptionPane.showMessageDialog(null, "Không có lượt mượn trong khoảng thời gian này.");
-                return;
-            }
-            if (tongluottk.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-            Tongluotmuon bang = new Tongluotmuon();
-            bang.setVisible(true);
-            Date fromDate = from1.getDate();
-            Date toDate = to1.getDate();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String from = sdf.format(fromDate);
-            String to = sdf.format(toDate);
-            bang.Thongke(from, to);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jPanel10MouseClicked
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        try {
-
-            Connection con = Database.getConnection();
-
-            LocalDate currentDate = LocalDate.now();
-            LocalDate oneMonthFromNow = currentDate.plusMonths(1);
-            String oneMonthFromNowStr = oneMonthFromNow.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-
-            String sql1 = "SELECT COUNT(*) AS notReturned FROM ChitietMt ct "
-                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
-                    + "WHERE ct.hientrangsau IS NULL "
-                    + "AND p.hantra BETWEEN GETDATE() AND ?";
-            PreparedStatement statement1 = con.prepareStatement(sql1);
-            statement1.setString(1, oneMonthFromNowStr);
-            ResultSet rs1 = statement1.executeQuery();
-            int notReturned = 0;
-            if (rs1.next()) {
-                notReturned = rs1.getInt("notReturned");
-            }
-            tongdenhan.setText(String.valueOf(notReturned));
-            rs1.close();
-            statement1.close();
-
-            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv "
-                    + "FROM PMT p "
-                    + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
-                    + "WHERE ct.hientrangsau IS NULL "
-                    + "AND p.hantra BETWEEN GETDATE() AND ?";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, oneMonthFromNowStr);
-            ResultSet rs = statement.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) bang1.getModel();
-            model.setRowCount(0);
-
-            while (rs.next()) {
-                model.addRow(new Object[]{
-                    rs.getString("maphieu"),
-                    rs.getString("masach"),
-                    rs.getString("ngaylap"),
-                    rs.getString("hantra"),
-                    rs.getString("masv"),});
-            }
-
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        try {
-            Date fromDate = from5.getDate();
-            Date toDate = to5.getDate();
-
-            if (fromDate == null || toDate == null) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String fromDateStr = sdf.format(fromDate);
-            String toDateStr = sdf.format(toDate);
-
-            Connection con = Database.getConnection();
-            String sql1 = "SELECT COUNT(*) AS notReturned FROM ChitietMt ct "
-                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
-                    + "WHERE p.ngaylap BETWEEN ? AND ? AND ct.hientrangsau IS NULL";
-            PreparedStatement statement1 = con.prepareStatement(sql1);
-            statement1.setString(1, fromDateStr);
-            statement1.setString(2, toDateStr);
-            ResultSet rs1 = statement1.executeQuery();
-            int notReturned = 0;
-            if (rs1.next()) {
-                notReturned = rs1.getInt("notReturned");
-            }
-            tongchuatra.setText(String.valueOf(notReturned));
-            rs1.close();
-            statement1.close();
-            String sql = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv  FROM PMT p "
-                    + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
-                    + "WHERE p.ngaylap BETWEEN ? AND ? AND ct.hientrangsau IS NULL";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, fromDateStr);
-            statement.setString(2, toDateStr);
-            ResultSet rs = statement.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) bang3.getModel();
-            model.setRowCount(0);
-            while (rs.next()) {
-                model.addRow(new Object[]{
-                    rs.getString("maphieu"),
-                    rs.getString("masach"),
-                    rs.getString("ngaylap"),
-                    rs.getString("hantra"),
-                    rs.getString("masv"),});
-            }
-            rs.close();
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel12MouseClicked
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        try {
-            Date fromDate = from6.getDate();
-            Date toDate = to6.getDate();
-
-            if (fromDate == null || toDate == null) {
-                JOptionPane.showMessageDialog(null, "Hãy nhập khoảng thời gian.");
-                return;
-            }
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String fromDateStr = sdf.format(fromDate);
-            String toDateStr = sdf.format(toDate);
-
-            Connection con = Database.getConnection();
+            
             String sql1 = "SELECT COUNT(*) AS quahan FROM PMT p "
                     + "JOIN ChitietMT ct ON p.maphieu = ct.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
@@ -1411,56 +1264,114 @@ public class TTpage extends javax.swing.JFrame {
             tongquahan.setText(String.valueOf(quahan));
             rs1.close();
             statement1.close();
-            String sql = "SELECT p.masv, p.maphieu, p.ngaylap, p.hantra, ct.ngaytra, ct.masach  FROM PMT p "
+            
+            String sql2 = "SELECT p.masv, p.maphieu, p.ngaylap, p.hantra, ct.ngaytra, ct.masach  FROM PMT p "
                     + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
                     + "WHERE p.ngaylap BETWEEN ? AND ? "
                     + "AND ("
                     + "(ct.ngaytra IS NULL AND p.hantra < GETDATE()) "
                     + "OR (ct.ngaytra > p.hantra)"
                     + ")";
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, fromDateStr);
-            statement.setString(2, toDateStr);
-            ResultSet rs = statement.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) bang2.getModel();
-            model.setRowCount(0);
-            while (rs.next()) {
-                model.addRow(new Object[]{
-                    rs.getString("masv"),
-                    rs.getString("maphieu"),
-                    rs.getString("ngaylap"),
-                    rs.getString("hantra"),
-                    rs.getString("ngaytra"),
-                    rs.getString("masach"),});
+            PreparedStatement statement2 = con.prepareStatement(sql2);
+            statement2.setString(1, fromDateStr);
+            statement2.setString(2, toDateStr);
+            ResultSet rs2 = statement2.executeQuery();
+            DefaultTableModel model2 = (DefaultTableModel) bang2.getModel();
+            model2.setRowCount(0);
+            while (rs2.next()) {
+                model2.addRow(new Object[]{
+                    rs2.getString("masv"),
+                    rs2.getString("maphieu"),
+                    rs2.getString("ngaylap"),
+                    rs2.getString("hantra"),
+                    rs2.getString("ngaytra"),
+                    rs2.getString("masach"),});
             }
-            rs.close();
-            statement.close();
+            rs2.close();
+            statement2.close();
+            
+            String sql3 = "SELECT COUNT(*) AS notReturned FROM ChitietMt ct "
+                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
+                    + "WHERE p.ngaylap BETWEEN ? AND ? AND ct.hientrangsau IS NULL";
+            PreparedStatement statement3 = con.prepareStatement(sql3);
+            statement3.setString(1, fromDateStr);
+            statement3.setString(2, toDateStr);
+            ResultSet rs3 = statement3.executeQuery();
+            int notReturned = 0;
+            if (rs3.next()) {
+                notReturned = rs3.getInt("notReturned");
+            }
+            tongchuatra.setText(String.valueOf(notReturned));
+            rs3.close();
+            statement3.close();
+            String sql4 = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv  FROM PMT p "
+                    + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
+                    + "WHERE p.ngaylap BETWEEN ? AND ? AND ct.hientrangsau IS NULL";
+            PreparedStatement statement4 = con.prepareStatement(sql4);
+            statement4.setString(1, fromDateStr);
+            statement4.setString(2, toDateStr);
+            ResultSet rs4 = statement4.executeQuery();
+            DefaultTableModel model4 = (DefaultTableModel) bang3.getModel();
+            model4.setRowCount(0);
+            while (rs4.next()) {
+                model4.addRow(new Object[]{
+                    rs4.getString("maphieu"),
+                    rs4.getString("masach"),
+                    rs4.getString("ngaylap"),
+                    rs4.getString("hantra"),
+                    rs4.getString("masv"),});
+            }
+            rs4.close();
+            statement4.close();
+            
+            String sql5 = "SELECT COUNT(*) AS notReturned FROM ChitietMt ct "
+                    + "JOIN PMT p ON p.maphieu = ct.maphieu "
+                    + "WHERE ct.hientrangsau IS NULL "
+                    + "AND p.hantra BETWEEN GETDATE() AND DATEADD(MONTH, 1, GETDATE())";
+            PreparedStatement statement5 = con.prepareStatement(sql5);
+            ResultSet rs5 = statement5.executeQuery();
+            int notReturned5 = 0;
+            if (rs5.next()) {
+                notReturned5 = rs5.getInt("notReturned");
+            }
+            tongdenhan.setText(String.valueOf(notReturned5));
+            rs5.close();
+            statement5.close();
+
+            String sql6 = "SELECT p.maphieu, ct.masach, p.ngaylap, p.hantra, p.masv "
+                    + "FROM PMT p "
+                    + "JOIN ChitietMt ct ON p.maphieu = ct.maphieu "
+                    + "WHERE ct.hientrangsau IS NULL "
+                    + "AND p.hantra BETWEEN GETDATE() AND DATEADD(MONTH, 1, GETDATE())";
+            PreparedStatement statement6 = con.prepareStatement(sql6);
+            ResultSet rs6 = statement6.executeQuery();
+            DefaultTableModel model6 = (DefaultTableModel) bang1.getModel();
+            model6.setRowCount(0);
+
+            while (rs6.next()) {
+                model6.addRow(new Object[]{
+                    rs6.getString("maphieu"),
+                    rs6.getString("masach"),
+                    rs6.getString("ngaylap"),
+                    rs6.getString("hantra"),
+                    rs6.getString("masv"),});
+            }          
+            rs6.close();
+            statement6.close();
+            
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }//GEN-LAST:event_thongKeActionPerformed
 
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
+    private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel13MouseClicked
+    }//GEN-LAST:event_jPanel11MouseClicked
 
-    private void mapmtmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapmtmuonActionPerformed
+    private void tongchuatraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongchuatraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mapmtmuonActionPerformed
-
-    private void hientrangmuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hientrangmuonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hientrangmuonActionPerformed
-
-    private void tongquahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongquahanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tongquahanActionPerformed
-
-    private void tongluottkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongluottkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tongluottkActionPerformed
+    }//GEN-LAST:event_tongchuatraActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1479,31 +1390,25 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JTable bangsach;
     private javax.swing.JTable bangtra;
     private javax.swing.JButton capnhat;
-    private com.toedter.calendar.JDateChooser from1;
-    private com.toedter.calendar.JDateChooser from5;
-    private com.toedter.calendar.JDateChooser from6;
+    private com.toedter.calendar.JDateChooser from2;
     private com.toedter.calendar.JDateChooser fromls;
     private javax.swing.JComboBox hientrangmuon;
     private javax.swing.JButton huycapnhat;
     private javax.swing.JButton huymuon;
     private javax.swing.JButton huythem;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1519,14 +1424,10 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
@@ -1537,6 +1438,7 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
@@ -1576,12 +1478,11 @@ public class TTpage extends javax.swing.JFrame {
     private javax.swing.JTextField themtg;
     private javax.swing.JTextField themtl;
     private javax.swing.JComboBox<String> themvitri;
+    private javax.swing.JButton thongKe;
     private javax.swing.JButton timkiemls;
     private javax.swing.JButton timkiemsach;
     private javax.swing.JButton timtra;
-    private com.toedter.calendar.JDateChooser to1;
-    private com.toedter.calendar.JDateChooser to5;
-    private com.toedter.calendar.JDateChooser to6;
+    private com.toedter.calendar.JDateChooser to2;
     private com.toedter.calendar.JDateChooser tols;
     private javax.swing.JTextField tongchuatra;
     private javax.swing.JTextField tongdenhan;
